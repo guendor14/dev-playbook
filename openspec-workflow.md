@@ -24,13 +24,15 @@ Never implement directly. Always follow the full flow:
 
 Never skip or defer these steps.
 
-## After implementation: sync specs
+## After implementation: update specs
 
-After any implementation — even bug fixes and refactors — review the relevant capability specs and update them if the behavior changed. Use the `openspec-sync-specs` skill via subagent — do not manually write spec files with the Write tool.
+After any implementation — even bug fixes and refactors — review the relevant capability specs and update them if the behaviour changed. Edit the spec file in place inside the SON folder: `openspec/changes/<name>/specs/<capability>/spec.md`. Use the Edit or Write tool directly.
+
+**Do NOT** use the `openspec-sync-specs` skill — it writes to `openspec/specs/` which does not exist in this project.
 
 ## OpenSpec CLI safety
 
-Never run `openspec archive` CLI. It moves folders to an `archive/` subfolder which may violate project conventions. Completion is tracked via `.openspec.yaml` only.
+Never run `openspec archive` CLI. Never replicate its behaviour manually either — do not create `openspec/changes/archive/`, do not move or rename SON folders, do not add a date prefix to folder names. Completion is tracked by setting `status: archived` in `.openspec.yaml` in place.
 
 ## Spec location
 
